@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>emit</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  
+
+  <div id="app">
+
+  </div>
+
+
+<script>
+
+  var com = {
+    template:`
+    <div>
+      <ul>
+        <li @click="fun('蛋糕')">蛋糕</li>
+        <li @click="fun('牛奶')">牛奶</li>
+        <li @click="fun('奶茶')">奶茶</li>
+        <li @click="fun('排骨')">排骨</li>
+      </ul>
+    </div>`,
+    methods:{
+      fun(name){
+        console.log(name)
+        this.$emit('setMenu',name)
+      }
+  }
+  }
+
+
+var Page = {
+  template:`<div> 
+    客户点了:{{ str }}
+    <hr><hr>
+    <com @setMenu="fun"></com>
+    </div>`,
+  
+  data(){
+    return{
+      str:'我是父组件上的初始数据'
+    }
+  },
+ 
+  components:{com},
+  methods:{
+    fun(food){
+      console.log('接受到了子组件传过来的数据',food)
+      this.str=food
+    }
+  }
+}
+
+new Vue({
+   render: function (h) {
+    return h(Page)
+  }
+}).$mount("#app")
+
+  </script>
+</body>
+</html>

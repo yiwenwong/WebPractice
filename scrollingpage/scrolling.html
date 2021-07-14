@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .box{
+      height: 100px;
+      background-color: aliceblue;
+      border: solid 3px red;
+      border-radius: 10px;
+      width: 500px;
+      margin: 50px auto 0;
+      overflow: hidden;
+      /* 不用css滑动，使用js手动滑动 */
+    }
+    ul{
+      list-style: none;
+    }
+    ul li{
+      text-align: center;
+    }
+  </style>
+
+ 
+</head>
+<body>
+    <div class="box"> 
+      <ul class="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+
+      </ul>
+
+      <ul class="ul2">
+
+      </ul>
+    </div>
+
+    <script>
+      var box = document.querySelector(".box")
+      var ul1 = document.querySelector(".ul1")
+      var ul2 = document.querySelector(".ul2")
+
+      ul2.innerHTML = ul1.innerHTML
+
+      function scroll() {
+        if(box.scrollTop == ul1.scrollHeight){
+          box.scrollTop = 0
+        }else{
+          box.scrollTop++
+        }
+      }
+      
+      var inter = setInterval(scroll, 30);
+
+      box.onmouseover = function () {
+        // console.log('停止滑动')
+        clearInterval(inter)
+      }
+
+      box.onmouseout = function () {
+        // console.log("继续滑动")
+        inter = setInterval(scroll, 30);
+      }
+
+     </script>
+</body>
+</html>

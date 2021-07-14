@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>debounce</title>
+</head>
+<body>
+  <input type=" " id="debounce" placeholder="请输入搜索的文字">
+  <div id="cont"></div>
+
+  <script>
+    var deb = document.getElementById("debounce")
+    var timeOut
+
+    inText = () => {
+      console.log("向服务器发送请求")
+      document.getElementById("cont").innerHTML = deb.value
+    }
+
+    var delay = ()=>{
+        if(timeOut)clearTimeout(timeOut)
+        timeOut = setTimeout(() => {
+        inText()
+      }, 1000);
+    }
+    
+    document.addEventListener("input",delay)
+
+
+
+  </script>
+</body>
+</html>

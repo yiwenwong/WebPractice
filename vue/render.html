@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>render</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  
+
+  <div id="app">
+
+  </div>
+
+
+<script>
+var Page = {
+  template:'<div>12345</div>',
+  
+  data(){
+    return{
+      a:'1'
+    }
+  },
+  created(){
+    this.fun();
+  },
+
+  methods:{
+    fun(){
+      console.log(this.a)
+    }
+  }
+}
+
+new Vue({
+   render: function (h) {
+    return h(Page)
+  }
+}).$mount("#app")
+
+  </script>
+</body>
+</html>

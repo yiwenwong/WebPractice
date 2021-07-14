@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+    第一个html文档
+
+    <div id="box">
+      111
+    </div>
+    <script>
+      var a = 123
+      console.log(a,typeof a)
+      console.log(a.toString())
+      var c = {
+        name:"xiao",
+        age:22,
+        act:{
+          sleep:"10hour"
+        },
+        todo:function learn(a,b) {
+          return a+b
+          
+        },
+        totodo:function learning(){
+          console.log(arguments)
+        },
+        nextday:function play() {
+          for (let i = 0; i < arguments.length; i++) {
+            console.log(arguments[i])            
+          }
+          
+        }
+      }
+      console.log(c.act.sleep)
+      console.log(c.todo(2,4))
+      c.totodo(5,6,7)
+
+      for (let i = 0; i < 5; i++) {
+         console.log(i)
+      }
+
+      c.nextday(4,78,9)
+      var arr = [4,2,9]
+      arr.map(function  (item,index) {
+        console.log(index,item)
+      })
+      arr.forEach(function (item,index) {
+        console.log(index,item)
+        
+      })
+      var a=1
+      console.log(a++)
+      console.log(++a)
+
+
+      var str = '3'
+      var str2 = '7'
+
+      str3 = str=='3'? str2=='8'? '9':'10':'2'
+      console.log(str3)
+
+      function fun(x) {
+        return x+4
+      }
+
+      function fun2(x,y,fun) {
+        console.log(x,y,fun)
+        return x+fun(y)
+      }
+
+      console.log(fun2(3,4,fun))
+
+      +(function (){
+        console.log('lambda')
+      })()
+
+      var arr = []
+
+      for (let i = 0; i < 5; i++) {
+        arr[i]=function (){
+          console.log([i])
+        }
+      }
+
+      arr[0]()
+      arr[1]()
+      arr[2]()
+
+      for (let i = 0; i < 5; i++) {
+        (function (i){
+          console.log([i])
+        })(i)
+      }
+
+      var timer = setTimeout(function() {
+        $('#box').append("<h2>身份卡机</h2>")
+      }, 1000);
+
+      clearTimeout(timer)
+
+
+      var count = 7
+      var inter = setInterval(function (){
+        if(count>0){
+          $("#box").append("<h3>间隔执行</h3>")
+          count--
+        }else{
+          clearInterval(inter)
+        }
+         
+      }, 3000);
+    </script>
+</body>
+</html>
